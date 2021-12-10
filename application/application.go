@@ -31,7 +31,7 @@ func StartApplication() {
 			panic(err)
 		}
 	} else {
-		err := http.ListenAndServe(":5000", nil)
+		err := http.ListenAndServe(":"+port, nil)
 		if err != nil {
 			panic(err)
 		}
