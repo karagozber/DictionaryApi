@@ -1,3 +1,0 @@
-2021-12-10 11:05:49.409388 +0300 +03 m=+10.136170292	 Request: GET/api/set?Key=ecehan&Value=kocaman
-2021-12-10 11:06:01.198151 +0300 +03 m=+21.925185084	 Request: GET/api/set?Key=ecehan
-2021-12-10 11:06:08.0138 +0300 +03 m=+28.740981709	 Request: GET/api/get?Key=ecehan

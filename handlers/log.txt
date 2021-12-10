@@ -1,2 +1,0 @@
-2021-12-10 11:56:55.645941 +0300 +03 m=+0.002569710	 Request: GETapi/get?Key=berkay
-2021-12-10 11:56:55.646517 +0300 +03 m=+0.003145460	 Request: POSTapi/set?Key=berkay&Value=karag%C3%B6z
