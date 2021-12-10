@@ -27,13 +27,7 @@ func (d *DictionaryHandlers) GetValue(w http.ResponseWriter, r *http.Request) {
 	logRequests(r, logFile)
 	if r.Method == "GET" {
 		key := r.URL.Query()["Key"]
-		if len(key) == 0 {
-			dictionary, _ := json.Marshal(d)
-			fmt.Fprint(w, string(dictionary))
-			w.WriteHeader(http.StatusOK)
-			w.Header().Set("Content-Type", "application/json")
-			return
-		} else if len(key) == 1 {
+		if len(key) == 1 {
 			if _, ok := d.Data[key[0]]; ok {
 				keyValue := KeyValue{Key: key[0], Value: d.Data[key[0]]}
 				value, _ := json.Marshal(keyValue)
@@ -41,6 +35,8 @@ func (d *DictionaryHandlers) GetValue(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusOK)
 				w.Header().Set("Content-Type", "application/json")
 				return
+			} else {
+				w.WriteHeader(http.StatusBadRequest)
 			}
 		} else {
 			w.WriteHeader(http.StatusBadRequest)
