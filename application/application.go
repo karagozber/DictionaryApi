@@ -24,7 +24,7 @@ func StartApplication() {
 	http.HandleFunc("/api/get", dictionaryHandler.GetValue)
 	http.HandleFunc("/api/set", dictionaryHandler.SetValue)
 	http.HandleFunc("/api/flush", dictionaryHandler.FlushDictionary)
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":5000", nil)
 
 	if err != nil {
 		panic(err)
