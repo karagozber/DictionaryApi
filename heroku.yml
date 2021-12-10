@@ -3,4 +3,4 @@ build:
     web: dockerfile
 
 run:
-  web: ./main
+  web: ./app
