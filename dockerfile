@@ -13,4 +13,4 @@ COPY --from=builder /go/bin/app /app
 RUN mkdir storage && touch storage/dictionary.json
 ENTRYPOINT /app
 LABEL Name=dictionaryapi Version=0.0.1
-EXPOSE 5000
+EXPOSE 8080
