@@ -31,7 +31,7 @@ func (d *DictionaryHandlers) GetValue(w http.ResponseWriter, r *http.Request) {
 			if _, ok := d.Data[key[0]]; ok {
 				keyValue := KeyValue{Key: key[0], Value: d.Data[key[0]]}
 				value, _ := json.Marshal(keyValue)
-				w.Write(value)
+				_, _ = w.Write(value)
 				w.WriteHeader(http.StatusOK)
 				w.Header().Set("Content-Type", "application/json")
 				return
@@ -81,7 +81,7 @@ func (d *DictionaryHandlers) FlushDictionary(w http.ResponseWriter, r *http.Requ
 				w.WriteHeader(http.StatusInternalServerError)
 			} else {
 				d.Data = map[string]string{}
-				file.Truncate(0)
+				_ = file.Truncate(0)
 				w.WriteHeader(http.StatusOK)
 			}
 		}

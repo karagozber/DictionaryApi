@@ -44,13 +44,13 @@ func loadJSON(h *handlers.DictionaryHandlers) {
 	if !os.IsNotExist(err) {
 		if fileInfo.Size() != 0 {
 			file, err := os.OpenFile(dictionary, os.O_CREATE|os.O_RDONLY, 0666)
-			defer file.Close()
+			defer func() { _ = file.Close() }()
 			if err != nil {
 				fmt.Println(err)
 			}
 			tempMap := map[string]string{}
 			byteValue, _ := ioutil.ReadFile(dictionary)
-			json.Unmarshal(byteValue, &tempMap)
+			_ = json.Unmarshal(byteValue, &tempMap)
 			for k, v := range tempMap {
 				h.Data[k] = v
 			}
@@ -67,8 +67,8 @@ func saveJSON(n time.Duration, h *handlers.DictionaryHandlers) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		defer file.Close()
-		file.Truncate(0)
+		defer func() { _ = file.Close() }()
+		_ = file.Truncate(0)
 		_, writeError := file.Write(data)
 		if writeError != nil {
 			log.Fatal(writeError)
